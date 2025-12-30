@@ -14,4 +14,36 @@ Now we need to do some score counting.
 
 We can create two variables, one for the human score, and one for the computer score, and we can implement a counter for each based on what the result of the round will be.
 
-So something like if computer wins then computerScore increments by 1
+So something like if computer wins then computerScore increments by 1, else if human wins increment by 1, else no one wins and no one's scores are changed.
+
+Now we have to play a single round, so how to do that...well we'd go rock...paper...scissors...shoot, and on shoot we would reveal, or...compare...our choices. 
+
+If computerChoice is rock and humanChoice is scissors
+    announce the computer winning
+    computerScore increments by 1
+else if computerChoice is rock and humanChoice is paper
+    announce the human winning
+    humanScore increments by 1
+else if computer choice is paper and human choice is rock
+    announce computer winning
+    computer score increments by 1
+else if computer choice is paper and human choice is scissors
+    announce the human winning
+    computer score increments by 1
+else if computer choice is scissors and human choice is paper
+    announce computer winning
+    computer score increments by 1
+else if computer choice is scissors and human choice is rock
+    announce the human winning
+    computer score increments by 1
+else
+    its a tie!
+
+then if we want to play rounds, we can loop over the if statements an x number of times
+also make sure that you re-prompt the human and computer inputs again on each loop
+
+
+
+Rock > Scissors
+Scissors > Paper
+Paper > Rock
