@@ -1,0 +1,17 @@
+Computer input would be a random input between three choices, Rock, Paper and Scissors.
+
+We can have an array of the three words, and then we can have the computer pick between 3 numbers, 0 1 and 2, and then whichever number the computer picks would return that position in the array.
+
+so we have an array of the words
+then we have the computer choose a random number between 0-2 inclusive and store it in a variable
+use that variable to return that position in the array
+
+Now we need a human input, which would mean we need a prompt.
+
+So we prompt the human with a question "Rock, Paper, Scissors? " and store the input in a variable
+
+Now we need to do some score counting.
+
+We can create two variables, one for the human score, and one for the computer score, and we can implement a counter for each based on what the result of the round will be.
+
+So something like if computer wins then computerScore increments by 1
