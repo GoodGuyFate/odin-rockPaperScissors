@@ -1,4 +1,4 @@
-console.log(`Hello World!`)
+console.log(`Welcome to Rock, Paper, Scissors! To start, please call the "playGame()" function!`)
 
 function getComputerInput() {
     let array = [`Rock`, `Paper`, `Scissors`]
@@ -48,8 +48,7 @@ function playGame() {
             }
         }
         ++round
-        let result = playRound(x, y)
-        console.log(result)
+        playRound(x, y)
         console.log(`Computer Score: ${computerScore}`)
         console.log(`Your Score: ${humanScore}`)
     }
@@ -60,7 +59,7 @@ function playGame() {
     }
 }
 
-playGame()
+
 
 // console.log(x)
 // console.log(y)
