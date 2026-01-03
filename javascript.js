@@ -6,65 +6,112 @@ function getComputerInput() {
     return array[randInt]
 }
 
-// console.log(getComputerInput())
-
 function getHumanChoice() {
     let humanInput = prompt(`Rock, Paper, Scissors? `)
     return humanInput
 }
 
-// console.log(getHumanChoice())
+const buttons = document.querySelectorAll("button")
+const outputArea = document.querySelector("#output-area")
 
+buttons.forEach((button) => {
 
-function playGame() {
-    let humanScore = 0
-    let computerScore = 0
-    let round = 0
-    while (round <= 4) {
-        let x = getHumanChoice().toLowerCase()
-        let y = getComputerInput()
-
-        function playRound(humanChoice, computerChoice) {
-            if ((computerChoice == `Rock`) && (humanChoice == `scissors`)) {
-                ++computerScore
-                return console.log(`Computer chose ${computerChoice}, you lose! Rock beats Scissors!`)
-            }else if ((computerChoice == `Rock`) && (humanChoice == `paper`)) {
-                ++humanScore
-                return console.log(`Computer chose ${computerChoice}, you win! Paper beats Rock!`)
-            }else if ((computerChoice == `Paper`) && (humanChoice == `rock`)) {
-                ++computerScore
-                return console.log(`Computer chose ${computerChoice}, you lose! Paper beats rock!`)
-            }else if ((computerChoice == `Paper`) && (humanChoice == `scissors`)) {
-                ++humanScore
-                return console.log(`Computer chose ${computerChoice}, you win! Scissors beat Paper`)
-            }else if ((computerChoice == `Scissors`) && (humanChoice == `paper`)) {
-                ++computerScore
-                return console.log(`Computer chose ${computerChoice}, you lose! Scissors beat Paper`)
-            }else if ((computerChoice == `Scissors`) && (humanChoice == `rock`)) {
-                ++humanScore
-                return console.log(`Computer chose ${computerChoice}, you win! Rock beats Scissors!`)
-            }else {
-                return console.log(`Computer chose ${computerChoice}, Its a tie!`)
-            }
+    button.addEventListener("click", () => {
+        if (button.textContent === "Rock"){
+            playRound("rock", getComputerInput())
+        } else if (button.textContent === "Paper") {
+            playRound("paper", getComputerInput())
+        }else if (button.textContent === "Scissors") {
+            playRound("scissors", getComputerInput())
         }
-        ++round
-        playRound(x, y)
-        console.log(`Computer Score: ${computerScore}`)
-        console.log(`Your Score: ${humanScore}`)
+    })
+
+})
+let humanScore = 0
+let computerScore = 0
+let hScore = document.querySelector(".human-score")
+let cScore = document.querySelector(".computer-score")
+
+function resetGame() {
+    humanScore = 0
+    computerScore = 0
+
+    hScore.textContent = `Your Score: 0`
+    cScore.textContent = `Computer Score: 0`
+
+    outputArea.innerHTML = ""
+    console.log("Game Reset!")
+}
+
+function playRound(humanChoice, computerChoice) {
+    
+        if ((computerChoice == `Rock`) && (humanChoice == `scissors`)) {
+            ++computerScore
+            cScore.textContent = `Computer Score: ${computerScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you lose! Rock beats Scissors!`
+            outputArea.appendChild(text)
+        }else if ((computerChoice == `Rock`) && (humanChoice == `paper`)) {
+            ++humanScore
+            hScore.textContent = `Your Score: ${humanScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you win! Paper beats Rock!`
+            outputArea.appendChild(text)
+
+
+        }else if ((computerChoice == `Paper`) && (humanChoice == `rock`)) {
+            ++computerScore
+            cScore.textContent = `Computer Score: ${computerScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you lose! Paper beats rock!`
+            outputArea.appendChild(text)
+        }else if ((computerChoice == `Paper`) && (humanChoice == `scissors`)) {
+            ++humanScore
+            hScore.textContent = `Your Score: ${humanScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you win! Scissors beat Paper`
+            outputArea.appendChild(text)
+
+
+        }else if ((computerChoice == `Scissors`) && (humanChoice == `paper`)) {
+            ++computerScore
+            cScore.textContent = `Computer Score: ${computerScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you lose! Scissors beat Paper`
+            outputArea.appendChild(text)
+        }else if ((computerChoice == `Scissors`) && (humanChoice == `rock`)) {
+            ++humanScore
+            hScore.textContent = `Your Score: ${humanScore}`
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, you win! Rock beats Scissors!`
+            outputArea.appendChild(text)
+
+
+        }else {
+            let text = document.createElement('p')
+            text.textContent = `Computer chose ${computerChoice}, its a tie!`
+            outputArea.appendChild(text)
+        }
+        
+        if (humanScore == 5) {
+            alert("You reached 5 points! You win!")
+            resetGame()
+        } else if (computerScore == 5) {
+            alert("The computer reached 5 points, you lose.")
+            resetGame()
+        }
+        
     }
+            
+    playRound(x, y)
+    console.log(`Computer Score: ${computerScore}`)
+    console.log(`Your Score: ${humanScore}`)
+    
     if (computerScore > humanScore) {
         console.log(`You lose, the computer's score was ${computerScore} and your score was ${humanScore}`)
     } else {
         console.log(`You win! Your score was ${humanScore} and the computer's score was ${computerScore}`)
     }
-}
 
 
-
-// console.log(x)
-// console.log(y)
-
-// playRound(x, y)
-
-// console.log(`Computer Score: ${computerScore}`)
-// console.log(`Your Score: ${humanScore}`)
+  
